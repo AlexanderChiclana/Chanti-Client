@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import MediaWidget from '../MediaControls/MediaWidget.js'
+
 import styled from 'styled-components'
 import { borders, colors, flex, fontSize, navbar, sequencer} from '../../theme.js'
 import Space from './Space.js'
@@ -14,21 +17,21 @@ const SequencerContainer = styled.div`
     bottom: 0px;
     padding-left: 220px; 
     border: ${borders.large};
-    display: flex;
 `
 
 const SpaceContainer = styled.div`
     display: flex;
-    width: 65%;
+    width: 55%;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 4vh;
 `
 
 const ControlsContainer = styled.div`
     display: flex;
+    flex-grow: 1;
+    justify-content: center;
     
-    ${flex.center};
 `
 
 class Sequencer extends Component {
@@ -45,7 +48,7 @@ class Sequencer extends Component {
 
                 </SpaceContainer>
                 <ControlsContainer>
-                    hey
+                    <MediaWidget />
                 </ControlsContainer>
                 
             </SequencerContainer>

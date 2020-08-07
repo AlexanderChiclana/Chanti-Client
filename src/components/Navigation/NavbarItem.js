@@ -16,7 +16,7 @@ const NavbarItemContainer = styled.div.attrs(props => ({
   border-bottom: ${(props) => props.isActive && borders.large};
   color: ${colors.white};
   ${flex.center};
-  font-weight: 500;
+  font-weight: 700;
   font-size: ${fontSize.medium}
 `
 
