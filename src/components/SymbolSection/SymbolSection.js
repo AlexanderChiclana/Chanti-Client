@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 import styled from 'styled-components'
 import {
   colors,
@@ -54,7 +53,7 @@ class SymbolSection extends Component {
           <h1>Haftarah symbols</h1>
         </HeadingContainer>
         <TileContainer>
-        <Tile />
+          <Tile />
           <Tile />
           <Tile />
           <Tile />
