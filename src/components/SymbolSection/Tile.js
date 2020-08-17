@@ -8,6 +8,7 @@ import { ItemTypes } from '../../items.js'
 import { usePreview } from 'react-dnd-multi-backend'
 
 const TileContainer = styled.div`
+  opacity: ${props => (props.isDragging ? '.5' : '1')};
   background-color: ${colors.white};
   height: ${props => (props.isSmall ? '45px' : '120px')};
   width: ${props => (props.isSmall ? '45px' : '120px')};
@@ -21,36 +22,36 @@ const TileContainer = styled.div`
   font-weight: bold;
 `
 // custom preview for dragged preview
-const TilePreview = () => {
-  // hook for getting a preview from multi-dnd, an emulation of the preview since touch backend does not have preview by default
-  // item refers to the dragging item, has access to props
-  // style contains the position of mouse, necessary to wrap outer component of the custom preview
-  const { display, item, style } = usePreview()
-  // check for any display
-  if (!display) {
-    return null
-  }
-  return (
-    // copy of the component for the preview, uses StyledBall as single souce of truth
-    // can manually pass true to isDragging since it is the preview
-    <div style={style}>
+// const TilePreview = () => {
+//   // hook for getting a preview from multi-dnd, an emulation of the preview since touch backend does not have preview by default
+//   // item refers to the dragging item, has access to props
+//   // style contains the position of mouse, necessary to wrap outer component of the custom preview
+//   const { display, item, style } = usePreview()
+//   // check for any display
+//   if (!display) {
+//     return null
+//   }
+//   return (
+//     // copy of the component for the preview, uses StyledBall as single souce of truth
+//     // can manually pass true to isDragging since it is the preview
+//     <div style={style}>
     
-      <TileContainer hiddenColor={item.hiddenColor} isDragging={true}> 
-      A
-      </TileContainer>
-    </div>
-  )
-}
+//       <TileContainer hiddenColor={item.hiddenColor} isDragging={true}> 
+//       A
+//       </TileContainer>
+//     </div>
+//   )
+// }
 
 const Tile = (props) => {
 
-  const { isSmall } = props
+  const { isSmall, symbol } = props
 
   const [{ isDragging }, drag] = useDrag({
     // need to define type based on set itemtypes, can attach additional props here. Accesible any time we interact with an item
     item: {
       type: ItemTypes.TILE,
-
+      symbol: symbol
     },
     // collection function, connects the browsers monitoring of dnd to props that react can use. Ball now has acces to drag info
     collect: monitor => ({
@@ -62,8 +63,9 @@ const Tile = (props) => {
     <TileContainer 
       isSmall={isSmall} 
       ref={drag}
+      isDragging={isDragging}
     >
-      A
+      {symbol}
       {/* <TilePreview isDragging={isDragging} /> */}
     </TileContainer>
    );

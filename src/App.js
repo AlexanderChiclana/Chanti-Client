@@ -28,10 +28,11 @@ const TileContainer = styled.div`
   font-size: 90px;
   font-weight: bold;
   z-index: 500;
+
 `
 
 // custom preview for dragged preview, needs to be higher up for performance reasons
-const TilePreview = () => {
+const DragPreview = () => {
   // hook for getting a preview from multi-dnd, an emulation of the preview since touch backend does not have preview by default
   // item refers to the dragging item, has access to props
   // style contains the position of mouse, necessary to wrap outer component of the custom preview
@@ -44,9 +45,9 @@ const TilePreview = () => {
     // copy of the component for the preview, uses StyledBall as single souce of truth
     // can manually pass true to isDragging since it is the preview
     <div style={{...style, zIndex: '500'}}>
-    
+      
       <TileContainer hiddenColor={item.hiddenColor} isDragging={true}> 
-      A
+      {item.symbol}
       </TileContainer>
     </div>
   )
@@ -71,7 +72,7 @@ function App() {
   return (
     <div className="App">
       <DndProvider backend={MultiBackend} options={HTML5toTouch}>
-      <TilePreview />
+      <DragPreview />
 
         <Navbar />
 

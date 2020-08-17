@@ -53,25 +53,25 @@ class SymbolSection extends Component {
           <h1>Haftarah symbols</h1>
         </HeadingContainer>
         <TileContainer>
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
+          <Tile symbol={'A'}/>
+          <Tile symbol={'B'}/>
+          <Tile symbol={'C'}/>
+          <Tile symbol={'D'}/>
+          <Tile symbol={'E'}/>
+          <Tile symbol={'F'}/>
+          <Tile symbol={'G'}/>
+          <Tile symbol={'H'}/>
+          <Tile symbol={'I'}/>
+          <Tile symbol={'J'}/>
+          <Tile symbol={'K'}/>
+          <Tile symbol={'L'}/>
+          <Tile symbol={'M'}/>
+          <Tile symbol={'N'}/>
+          <Tile symbol={'O'}/>
+          <Tile symbol={'P'}/>
+          <Tile symbol={'Q'}/>
+          <Tile symbol={'R'}/>
+          <Tile symbol={'S'}/>
         </TileContainer>
       </SymbolSectionContainer>
     )

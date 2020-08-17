@@ -36,12 +36,12 @@ class Phrase extends Component {
     return (
       <PhraseContainer>
         <TileGroup>
-          <Tile isSmall={true} />
-          <Tile isSmall={true} />
-          <Tile isSmall={true} />
-          <Tile isSmall={true} />
-          <Tile isSmall={true} />
-          <Tile isSmall={true} />
+          <Tile isSmall={true} symbol={'A'}/>
+          <Tile isSmall={true} symbol={'B'}/>
+          <Tile isSmall={true} symbol={'C'}/>
+          <Tile isSmall={true} symbol={'D'}/>
+          <Tile isSmall={true} symbol={'E'}/>
+          <Tile isSmall={true} symbol={'F'}/>
         </TileGroup>
 
         <NameGroup>
