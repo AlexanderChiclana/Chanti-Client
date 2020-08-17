@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+
 import styled from 'styled-components'
 import { colors, navbar, sequencer, borders } from '../../theme.js'
+
+import { useDrag } from 'react-dnd'
+import { ItemTypes } from '../../items.js'
+import { usePreview } from 'react-dnd-multi-backend'
 
 const TileContainer = styled.div`
   background-color: ${colors.white};
@@ -20,8 +25,14 @@ class Tile extends Component {
   render() {
     const { isSmall } = this.props
 
-    return <TileContainer isSmall={isSmall}>A</TileContainer>
+    return (
+
+        <TileContainer isSmall={isSmall}>A</TileContainer>
+      
+    )
   }
 }
+
+
 
 export default Tile
