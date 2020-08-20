@@ -8,6 +8,7 @@ import { ItemTypes } from '../../items.js'
 import { usePreview } from 'react-dnd-multi-backend'
 
 const TileContainer = styled.div`
+  cursor: grab;
   opacity: ${props => (props.isDragging ? '.5' : '1')};
   background-color: ${colors.white};
   height: ${props => (props.isSmall ? '45px' : '120px')};

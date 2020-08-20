@@ -69,7 +69,7 @@ class SymbolSection extends Component {
           <Tile symbol={'N'}/>
           <Tile symbol={'O'}/>
           <Tile symbol={'P'}/>
-          <Tile symbol={'Q'}/>
+          <Tile symbol={'Y'}/>
           <Tile symbol={'R'}/>
           <Tile symbol={'S'}/>
         </TileContainer>

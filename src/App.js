@@ -28,7 +28,7 @@ const TileContainer = styled.div`
   font-size: 90px;
   font-weight: bold;
   z-index: 500;
-
+  cursor: grabbing;
 `
 
 // custom preview for dragged preview, needs to be higher up for performance reasons
@@ -44,7 +44,7 @@ const DragPreview = () => {
   return (
     // copy of the component for the preview, uses StyledBall as single souce of truth
     // can manually pass true to isDragging since it is the preview
-    <div style={{...style, zIndex: '500'}}>
+    <div className="dragging" style={{...style, zIndex: '500'}}>
       
       <TileContainer hiddenColor={item.hiddenColor} isDragging={true}> 
       {item.symbol}
