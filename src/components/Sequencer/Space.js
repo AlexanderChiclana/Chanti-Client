@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { borders, colors, flex, fontSize, navbar } from '../../theme.js'
 
 const SpaceContainer = styled.div`
-  background-color: ${(props) => props.isDropTarget ? colors.secondaryLight : colors.white };
-  opacity: ${(props) => props.value ? '100%' : '40%'};
+  background-color: ${(props) => props.isDropTarget ? '#6C9AB7' : '#6C9AB7' };
+  opacity: ${(props) => props.isDropTarget ? '.5' : '1'};
   border-radius: 15%;
   height: 130px;
   width: 130px;
