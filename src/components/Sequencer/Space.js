@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { borders, colors, flex, fontSize, navbar } from '../../theme.js'
+import { BounceIn, FadeIn, FadeOut } from 'animate-css-styled-components'
 
 const SpaceContainer = styled.div`
-  background-color: ${(props) => props.isDropTarget ? '#6C9AB7' : '#6C9AB7' };
-  opacity: ${(props) => props.isDropTarget ? '.5' : '1'};
+  background-color: ${props => (props.isDropTarget ? '#6C9AB7' : '#6C9AB7')};
+  opacity: ${props => (props.isDropTarget ? '.5' : '1')};
+  transition: opacity 150ms;
   border-radius: 15%;
   height: 130px;
   width: 130px;
@@ -32,7 +34,11 @@ const Space = props => {
 
   return (
     <SpaceContainer value={value} isDropTarget={isDropTarget}>
-      {value && <ValueSpace> {value} </ValueSpace>}
+      {value && (
+        <ValueSpace>
+          <BounceIn>{value}</BounceIn>
+        </ValueSpace>
+      )}
     </SpaceContainer>
   )
 }

@@ -7,6 +7,9 @@ import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../../items.js'
 import { usePreview } from 'react-dnd-multi-backend'
 
+import { FlipInX } from 'animate-css-styled-components'
+
+
 const TileContainer = styled.div`
   cursor: grab;
   opacity: ${props => (props.isDragging ? '.5' : '1')};
@@ -22,31 +25,10 @@ const TileContainer = styled.div`
   font-size: ${props => (props.isSmall ? '30px' : '90px')};
   font-weight: bold;
 `
-// custom preview for dragged preview
-// const TilePreview = () => {
-//   // hook for getting a preview from multi-dnd, an emulation of the preview since touch backend does not have preview by default
-//   // item refers to the dragging item, has access to props
-//   // style contains the position of mouse, necessary to wrap outer component of the custom preview
-//   const { display, item, style } = usePreview()
-//   // check for any display
-//   if (!display) {
-//     return null
-//   }
-//   return (
-//     // copy of the component for the preview, uses StyledBall as single souce of truth
-//     // can manually pass true to isDragging since it is the preview
-//     <div style={style}>
-    
-//       <TileContainer hiddenColor={item.hiddenColor} isDragging={true}> 
-//       A
-//       </TileContainer>
-//     </div>
-//   )
-// }
 
 const Tile = (props) => {
 
-  const { isSmall, symbol } = props
+  const { isSmall, symbol, index } = props
 
   const [{ isDragging }, drag] = useDrag({
     // need to define type based on set itemtypes, can attach additional props here. Accesible any time we interact with an item
@@ -60,8 +42,14 @@ const Tile = (props) => {
     })
   })
 
+  const previewSound = () => {
+    alert('bruh you clicked')
+  }
+
   return ( 
+    <FlipInX duration={'.6s'} delay={`${index / 15}s`}>
     <TileContainer 
+      onClick={previewSound}
       isSmall={isSmall} 
       ref={drag}
       isDragging={isDragging}
@@ -69,6 +57,7 @@ const Tile = (props) => {
       {symbol}
       {/* <TilePreview isDragging={isDragging} /> */}
     </TileContainer>
+    </FlipInX>
    );
 }
  

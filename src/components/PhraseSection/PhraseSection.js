@@ -35,12 +35,12 @@ class PhraseSection extends Component {
                     </h1>
                 </HeadingContainer>
                 <PhraseListContainer>
-                    <Phrase />
-                    <Phrase />
-                    <Phrase />
-                    <Phrase />
-                    <Phrase />
-                    <Phrase />
+                    <Phrase index={1}/>
+                    <Phrase index={2}/>
+                    <Phrase index={3}/>
+                    <Phrase index={4}/>
+                    <Phrase index={5}/>
+                    <Phrase index={6}/>
                 </PhraseListContainer>
 
             </PhraseSectionContainer>

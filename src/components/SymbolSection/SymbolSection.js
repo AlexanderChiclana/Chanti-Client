@@ -9,6 +9,9 @@ import {
   fontSize,
   flex
 } from '../../theme.js'
+
+import { HeadShake, FadeIn, FadeOut } from 'animate-css-styled-components'
+
 import Tile from './Tile.js'
 
 const SymbolSectionContainer = styled.div`
@@ -52,27 +55,29 @@ class SymbolSection extends Component {
         <HeadingContainer>
           <h1>Haftarah symbols</h1>
         </HeadingContainer>
+
         <TileContainer>
-          <Tile symbol={'A'}/>
-          <Tile symbol={'B'}/>
-          <Tile symbol={'C'}/>
-          <Tile symbol={'D'}/>
-          <Tile symbol={'E'}/>
-          <Tile symbol={'F'}/>
-          <Tile symbol={'G'}/>
-          <Tile symbol={'H'}/>
-          <Tile symbol={'I'}/>
-          <Tile symbol={'J'}/>
-          <Tile symbol={'K'}/>
-          <Tile symbol={'L'}/>
-          <Tile symbol={'M'}/>
-          <Tile symbol={'N'}/>
-          <Tile symbol={'O'}/>
-          <Tile symbol={'P'}/>
-          <Tile symbol={'Y'}/>
-          <Tile symbol={'R'}/>
-          <Tile symbol={'S'}/>
+          <Tile index={1} symbol={'A'}/>
+          <Tile index={2} symbol={'B'}/>
+          <Tile index={3} symbol={'C'}/>
+          <Tile index={4} symbol={'D'}/>
+          <Tile index={5} symbol={'E'}/>
+          <Tile index={6} symbol={'F'}/>
+          <Tile index={7} symbol={'G'}/>
+          <Tile index={8} symbol={'H'}/>
+          <Tile index={9} symbol={'I'}/>
+          <Tile index={10} symbol={'J'}/>
+          <Tile index={11} symbol={'K'}/>
+          <Tile index={12} symbol={'L'}/>
+          <Tile index={13} symbol={'M'}/>
+          <Tile index={14} symbol={'N'}/>
+          <Tile index={15} symbol={'O'}/>
+          <Tile index={16} symbol={'P'}/>
+          <Tile index={17} symbol={'Y'}/>
+          <Tile index={18} symbol={'R'}/>
+          <Tile index={19} symbol={'S'}/>
         </TileContainer>
+        
       </SymbolSectionContainer>
     )
   }
