@@ -10,7 +10,7 @@ const SpaceContainer = styled.div`
   border-radius: 15%;
   height: 130px;
   width: 130px;
-  margin: 1vh;
+  margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;

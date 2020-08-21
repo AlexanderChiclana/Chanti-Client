@@ -1,10 +1,12 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navigation/Navbar.js'
 import Sequencer from './components/Sequencer/Sequencer.js'
 import SymbolSection from './components/SymbolSection/SymbolSection.js'
 import PhraseSection from './components/PhraseSection/PhraseSection.js'
 import DragPreview from './components/DragPreviews/DragPreview.js'
+import BookPage from './pages/BookPage.js'
 
 // dnd backends
 import { DndProvider } from 'react-dnd-multi-backend'
@@ -33,11 +35,13 @@ const App = () => {
       <div className="App">
         <DragPreview />
         <Navbar />
-        <Sequencer />
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <SymbolSection />
-          <PhraseSection />
-        </div>
+        <Route exact path='/torah' render={() => (<BookPage title={'Torah'}/>)} /> 
+        <Route exact path='/lamentation' render={() => (<BookPage title={'Lamentation'}/>)} /> 
+        <Route exact path='/hhd' render={() => (<BookPage title={'HHD Torah'}/>)} /> 
+        <Route exact path='/haftarah' render={() => (<BookPage title={'Haftarah'}/>)} /> 
+        <Route exact path='/ruth' render={() => (<BookPage title={'Ruth'}/>)} /> 
+        <Route exact path='/esther' render={() => (<BookPage title={'Esther'}/>)} /> 
+
       </div>
     </DndProvider>
   )

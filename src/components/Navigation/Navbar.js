@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import styled from 'styled-components'
 import { colors, navbar } from '../../theme.js'
 import NavbarItem from './NavbarItem.js'
+import { Link } from 'react-router-dom'
 
 const NavContainer = styled.div`
   height: 100vh;
@@ -20,19 +21,43 @@ const ProfileContainer = styled.div`
   height: 120px;
 `
 
-class Navbar extends Component {
-  render() {
-    return (
-      <NavContainer>
-        <ProfileContainer></ProfileContainer>
-        <NavbarItem title="Torah" />
-        <NavbarItem isActive={true} title="Lamentation" />
-        <NavbarItem title="HHD Torah" />
-        <NavbarItem title="Ruth" />
-        <NavbarItem title="Esther" />
-      </NavContainer>
-    )
-  }
-}
+const NavBar = () => {
+  const [books, setActive ] = useState([
+    {
+      route: 'torah', 
+      title:'Torah'
+    }, 
+    {
+      route: 'lamentation', 
+      title:'Lamentation'
+    }, 
+    {
+      route: 'hhd', 
+      title:'HHD Torah'
+    }, 
+    {
+      route: 'esther', 
+      title:'Esther'
+    }, 
+    {
+      route: 'haftarah', 
+      title:'Haftarah'
+    }, 
+    {
+      route: 'ruth', 
+      title:'Ruth'
+    }
+  ])
 
-export default Navbar
+  
+  return ( 
+    <NavContainer>
+    <ProfileContainer></ProfileContainer>
+    {books.map((book)=> <NavbarItem route={book.route} title={book.title}/>)}
+
+  </NavContainer>
+   );
+}
+ 
+
+export default NavBar

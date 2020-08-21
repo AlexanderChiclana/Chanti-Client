@@ -48,39 +48,37 @@ const TileContainer = styled.div`
 `
 // width: calc(70% - ${navbar.width} / 2);
 
-class SymbolSection extends Component {
-  render() {
-    return (
-      <SymbolSectionContainer>
-        <HeadingContainer>
-          <h1>Haftarah symbols</h1>
-        </HeadingContainer>
+const SymbolSection = (props) => {
+  const { title } = props
+  return (
+    <SymbolSectionContainer>
+      <HeadingContainer>
+        <h1>{title}</h1>
+      </HeadingContainer>
 
-        <TileContainer>
-          <Tile index={1} symbol={'A'}/>
-          <Tile index={2} symbol={'B'}/>
-          <Tile index={3} symbol={'C'}/>
-          <Tile index={4} symbol={'D'}/>
-          <Tile index={5} symbol={'E'}/>
-          <Tile index={6} symbol={'F'}/>
-          <Tile index={7} symbol={'G'}/>
-          <Tile index={8} symbol={'H'}/>
-          <Tile index={9} symbol={'I'}/>
-          <Tile index={10} symbol={'J'}/>
-          <Tile index={11} symbol={'K'}/>
-          <Tile index={12} symbol={'L'}/>
-          <Tile index={13} symbol={'M'}/>
-          <Tile index={14} symbol={'N'}/>
-          <Tile index={15} symbol={'O'}/>
-          <Tile index={16} symbol={'P'}/>
-          <Tile index={17} symbol={'Y'}/>
-          <Tile index={18} symbol={'R'}/>
-          <Tile index={19} symbol={'S'}/>
-        </TileContainer>
-        
-      </SymbolSectionContainer>
-    )
-  }
+      <TileContainer>
+        <Tile index={1} symbol={'A'} />
+        <Tile index={2} symbol={'B'} />
+        <Tile index={3} symbol={'C'} />
+        <Tile index={4} symbol={'D'} />
+        <Tile index={5} symbol={'E'} />
+        <Tile index={6} symbol={'F'} />
+        <Tile index={7} symbol={'G'} />
+        <Tile index={8} symbol={'H'} />
+        <Tile index={9} symbol={'I'} />
+        <Tile index={10} symbol={'J'} />
+        <Tile index={11} symbol={'K'} />
+        <Tile index={12} symbol={'L'} />
+        <Tile index={13} symbol={'M'} />
+        <Tile index={14} symbol={'N'} />
+        <Tile index={15} symbol={'O'} />
+        <Tile index={16} symbol={'P'} />
+        <Tile index={17} symbol={'Y'} />
+        <Tile index={18} symbol={'R'} />
+        <Tile index={19} symbol={'S'} />
+      </TileContainer>
+    </SymbolSectionContainer>
+  )
 }
 
 export default SymbolSection
