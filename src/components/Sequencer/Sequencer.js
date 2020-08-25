@@ -18,6 +18,7 @@ import Space from './Space.js'
 
 const SequencerContainer = styled.div`
   display: flex;
+
   width: calc(100vw - ${navbar.width});
   position: fixed;
   right: 0px;
@@ -27,6 +28,7 @@ const SequencerContainer = styled.div`
   bottom: 0px;
   padding-left: 220px;
   border: ${borders.large};
+  z-index: 150;
 `
 
 const SpaceContainer = styled.div`

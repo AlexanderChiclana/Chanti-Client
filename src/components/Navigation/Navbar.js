@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const NavContainer = styled.div`
   height: 100vh;
-  z-index: 100;
+  z-index: 200;
   width: ${navbar.width};
   position: fixed;
   background-color: ${colors.black};

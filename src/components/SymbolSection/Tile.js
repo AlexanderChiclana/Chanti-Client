@@ -24,6 +24,7 @@ const TileContainer = styled.div`
   align-items: center;
   font-size: ${props => (props.isSmall ? '30px' : '90px')};
   font-weight: bold;
+  z-index: 100;
 `
 
 const Tile = (props) => {

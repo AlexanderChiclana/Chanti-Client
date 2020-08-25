@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { colors, borders } from '../../theme.js'
 import { usePreview } from 'react-dnd-multi-backend'
 
-
 const TilePreview = styled.div`
   background-color: ${colors.white};
   height: 120px;
@@ -21,15 +20,22 @@ const TilePreview = styled.div`
   cursor: grabbing;
 `
 
+const PhrasePreview = styled.div`
+
+`
+
+
 const DragPreview = () => {
-    // hook for getting a preview from multi-dnd, an emulation of the preview since touch backend does not have preview by default
-    // item refers to the dragging item, has access to props
-    // style contains the position of mouse, necessary to wrap outer component of the custom preview
-    const { display, item, style } = usePreview()
-    // check for any display
-    if (!display) {
-      return null
-    }
+  // hook for getting a preview from multi-dnd, an emulation of the preview since touch backend does not have preview by default
+  // item refers to the dragging item, has access to props
+  // style contains the position of mouse, necessary to wrap outer component of the custom preview
+  const { display, item, style, itemType } = usePreview()
+  // check for any display
+  if (!display) {
+    return null
+  }
+
+  if (itemType === 'tile') {
     return (
       // copy of the component for the preview, uses StyledBall as single souce of truth
       // can manually pass true to isDragging since it is the preview
@@ -41,6 +47,21 @@ const DragPreview = () => {
         </Pulse>
       </div>
     )
+  } else if (itemType === 'phrase'){
+    return(
+      <div className="dragging" style={{ ...style, zIndex: '500' }}>
+      <Pulse iterationCount={'infinite'}>
+        <PhrasePreview>
+            What to do here?
+        </PhrasePreview>
+      </Pulse>
+    </div>
+    )
   }
+
+  else {
+    return null
+  }
+}
 
 export default DragPreview
