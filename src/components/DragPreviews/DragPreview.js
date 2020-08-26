@@ -17,7 +17,6 @@ const TilePreview = styled.div`
   font-size: 90px;
   font-weight: bold;
   z-index: 500;
-  cursor: grabbing;
 `
 
 const PhrasePreview = styled.div`

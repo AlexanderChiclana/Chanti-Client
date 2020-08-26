@@ -21,7 +21,7 @@ const MediaWidgetContainer = styled.div`
 const Bar = styled.div`
   padding: 0px 10px 0px 10px;
   border-radius: 120px;
-  border: ${borders.large};
+  border: ${borders.medium};
   background-color: ${colors.primaryLight};
   display: flex;
   height: 115px;
@@ -33,7 +33,7 @@ const Bar = styled.div`
 const PlayButton = styled.div`
 background-color: ${colors.secondary};
 border-radius: 50%;
-border: ${borders.large};
+border: ${borders.medium};
 height: 200px;
 width: 200px;
 `

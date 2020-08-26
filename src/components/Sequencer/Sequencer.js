@@ -27,7 +27,8 @@ const SequencerContainer = styled.div`
   background-color: ${colors.primary};
   bottom: 0px;
   padding-left: 220px;
-  border: ${borders.large};
+  border: ${borders.medium};
+  border-right: 0px;
   z-index: 150;
 `
 

@@ -5,7 +5,7 @@ import { colors, navbar, borders, sequencer, fontSize, flex } from '../../theme.
 const ButtonContainer = styled.div`
 background-color: ${colors.offBlack};
 border-radius: 50%;
-border: ${borders.large};
+border: ${borders.medium};
 height: 80px;
 width: 80px;
 `

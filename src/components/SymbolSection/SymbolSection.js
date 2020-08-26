@@ -16,14 +16,14 @@ import Tile from './Tile.js'
 
 const SymbolSectionContainer = styled.div`
   background-color: ${colors.primaryLight};
-  border: ${borders.large};
+  border: ${borders.medium};
   border-bottom: none;
   border-left: none;
   width: 55%;
   margin-left: ${navbar.width};
   min-height: calc(
-    100vh - ${sequencer.height.large} - ${borders.large.split(' ')[0]} -
-      ${borders.large.split(' ')[0]}
+    100vh - ${sequencer.height.large} - ${borders.medium.split(' ')[0]} -
+      ${borders.medium.split(' ')[0]}
   );
   overflow: scroll;
 `
@@ -49,7 +49,7 @@ const TileContainer = styled.div`
 // width: calc(70% - ${navbar.width} / 2);
 
 const SymbolSection = (props) => {
-  const { title } = props
+  const { title, symbolData } = props
   return (
     <SymbolSectionContainer>
       <HeadingContainer>
@@ -57,25 +57,9 @@ const SymbolSection = (props) => {
       </HeadingContainer>
 
       <TileContainer>
-        <Tile index={1} symbol={'A'} />
-        <Tile index={2} symbol={'B'} />
-        <Tile index={3} symbol={'C'} />
-        <Tile index={4} symbol={'D'} />
-        <Tile index={5} symbol={'E'} />
-        <Tile index={6} symbol={'F'} />
-        <Tile index={7} symbol={'G'} />
-        <Tile index={8} symbol={'H'} />
-        <Tile index={9} symbol={'I'} />
-        <Tile index={10} symbol={'J'} />
-        <Tile index={11} symbol={'K'} />
-        <Tile index={12} symbol={'L'} />
-        <Tile index={13} symbol={'M'} />
-        <Tile index={14} symbol={'N'} />
-        <Tile index={15} symbol={'O'} />
-        <Tile index={16} symbol={'P'} />
-        <Tile index={17} symbol={'Y'} />
-        <Tile index={18} symbol={'R'} />
-        <Tile index={19} symbol={'S'} />
+
+       {symbolData.map((symbol, index) =>  <Tile index={index} key={index} symbol={symbol.symbol} sound={symbol.sound}/> )}
+
       </TileContainer>
     </SymbolSectionContainer>
   )

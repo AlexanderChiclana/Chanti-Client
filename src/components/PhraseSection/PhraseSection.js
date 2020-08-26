@@ -14,10 +14,10 @@ const HeadingContainer = styled.div`
 
 const PhraseSectionContainer = styled.div`
     background-color: ${colors.secondary};
-    max-height: calc( 100vh - ${sequencer.height.large} - ${borders.large.split(' ')[0]} - ${borders.large.split(' ')[0]}) );
+    max-height: calc( 100vh - ${sequencer.height.large} - ${borders.medium.split(' ')[0]} - ${borders.medium.split(' ')[0]}) );
     flex-grow: 1;
-    border-top: ${borders.large};
-    border-right: ${borders.large};
+    border-top: ${borders.medium};
+    // border-right: ${borders.large};
     overflow: scroll;
 `
 

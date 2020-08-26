@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
 import styled from 'styled-components'
 import { colors, navbar, sequencer, borders } from '../../theme.js'
@@ -8,11 +8,11 @@ import { ItemTypes } from '../../items.js'
 import { usePreview } from 'react-dnd-multi-backend'
 
 import { FlipInX } from 'animate-css-styled-components'
+import Sound from 'react-sound';
 
 
 const TileContainer = styled.div`
-  cursor: grab;
-  opacity: ${props => (props.isDragging ? '.5' : '1')};
+  opacity: ${props => ((props.isDragging || props.isPlaying) ? '.5' : '1')};
   background-color: ${colors.white};
   height: ${props => (props.isSmall ? '45px' : '120px')};
   width: ${props => (props.isSmall ? '45px' : '120px')};
@@ -27,9 +27,11 @@ const TileContainer = styled.div`
   z-index: 100;
 `
 
-const Tile = (props) => {
+const Tile = props => {
+  const { isSmall, symbol, index, sound } = props
 
-  const { isSmall, symbol, index } = props
+  const [playState, togglePlay] = useState('STOPPED') 
+  
 
   const [{ isDragging }, drag] = useDrag({
     // need to define type based on set itemtypes, can attach additional props here. Accesible any time we interact with an item
@@ -44,22 +46,34 @@ const Tile = (props) => {
   })
 
   const previewSound = () => {
-    alert('bruh you clicked')
+    !isDragging && togglePlay('PLAYING')
   }
 
-  return ( 
+
+
+
+  return (
     <FlipInX duration={'.6s'} delay={`${index / 15}s`}>
-    <TileContainer 
-      onClick={previewSound}
-      isSmall={isSmall} 
-      ref={drag}
-      isDragging={isDragging}
-    >
-      {symbol}
-      {/* <TilePreview isDragging={isDragging} /> */}
-    </TileContainer>
+      <Sound 
+           url={sound}
+           playStatus={isDragging ? Sound.status.STOPPED : Sound.status[playState] }
+          //  playFromPosition={0 /* in milliseconds */}
+          //  onLoading={handleSongLoading}
+          //  onPlaying={() => {console.log('playing')}}
+           onFinishedPlaying={() => togglePlay('STOPPED')}
+            />
+      <TileContainer
+        onClick={previewSound}
+        isSmall={isSmall}
+        isPlaying={playState === 'PLAYING'}
+        ref={playState === 'PLAYING' ? null : drag}
+        isDragging={isDragging}
+      >
+        {symbol}
+        {/* <TilePreview isDragging={isDragging} /> */}
+      </TileContainer>
     </FlipInX>
-   );
+  )
 }
- 
+
 export default Tile

@@ -14,6 +14,8 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import { TouchBackend } from 'react-dnd-touch-backend'
 import MultiBackend, { TouchTransition } from 'react-dnd-multi-backend'
 
+import systems from './data/systems.js'
+
 
 const HTML5toTouch = {
   backends: [
@@ -35,7 +37,7 @@ const App = () => {
       <div className="App">
         <DragPreview />
         <Navbar />
-        <Route exact path='/torah' render={() => (<BookPage title={'Torah'}/>)} /> 
+        <Route exact path='/torah' render={() => (<BookPage symbolData={systems.torah.symbolSounds} title={'Torah'}/>)} /> 
         <Route exact path='/lamentation' render={() => (<BookPage title={'Lamentation'}/>)} /> 
         <Route exact path='/hhd' render={() => (<BookPage title={'HHD Torah'}/>)} /> 
         <Route exact path='/haftarah' render={() => (<BookPage title={'Haftarah'}/>)} /> 
