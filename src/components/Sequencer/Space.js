@@ -17,7 +17,7 @@ const SpaceContainer = styled.div`
 `
 
 const ValueSpace = styled.div`
-  background-color: ${colors.white};
+  background-color: ${props => (props.isPlaying ? colors.secondaryLight : colors.white)};
   height: 100%;
   width: 100%;
   border-radius: inherit;
@@ -30,12 +30,12 @@ const ValueSpace = styled.div`
 `
 
 const Space = props => {
-  const { spaceValue, isDropTarget } = props
+  const { spaceValue, isDropTarget, isPlaying } = props
 
   return (
     <SpaceContainer isDropTarget={isDropTarget}>
       {spaceValue && (
-        <ValueSpace>
+        <ValueSpace isPlaying={isPlaying}>
           <BounceIn>{spaceValue.symbol}</BounceIn>
         </ValueSpace>
       )}

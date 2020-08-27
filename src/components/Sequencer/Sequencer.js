@@ -6,19 +6,13 @@ import { ItemTypes } from '../../items.js'
 import MediaWidget from '../MediaControls/MediaWidget.js'
 
 import styled from 'styled-components'
-import {
-  borders,
-  colors,
-  navbar,
-  sequencer
-} from '../../theme.js'
+import { borders, colors, navbar, sequencer } from '../../theme.js'
 import Space from './Space.js'
 
 import Sound from 'react-sound'
 
 const SequencerContainer = styled.div`
   display: flex;
-
   width: calc(100vw - ${navbar.width});
   position: fixed;
   right: 0px;
@@ -51,7 +45,7 @@ const ControlsContainer = styled.div`
 const Sequencer = () => {
   const [sequence, setSequence] = useState([null, null, null, null, null, null])
   const [sequencePlayStatus, setSequencePlayStatus] = useState('STOPPED')
-
+  const [currentSound, setCurrentSound] = useState(0)
 
   const [dropSound, toggleDrop] = useState('STOPPED')
 
@@ -78,6 +72,10 @@ const Sequencer = () => {
   const isDropTarget = index =>
     sequence.findIndex(space => space === null) === index && isOver
 
+  const isPlaying = (index) => (
+    
+    index === currentSound && sequencePlayStatus === 'PLAYING'
+  )
 
   return (
     <SequencerContainer ref={drop}>
@@ -87,56 +85,67 @@ const Sequencer = () => {
         onFinishedPlaying={() => toggleDrop('STOPPED')}
       />
       <SpaceContainer>
-        {sequence.map((space, index) => (
+        {
+          sequence.map((space, index) => (
           <Space
             key={index}
+            isPlaying={isPlaying(index)}
             isDropTarget={isDropTarget(index)}
             spaceValue={space}
           />
         ))}
 
         {sequencePlayStatus === 'PLAYING' && (
-          <SoundSequence setSequencePlayStatus={setSequencePlayStatus} sequence={sequence.filter((space) => space)}/>
+          <SoundSequence
+            currentSound={currentSound}
+            setCurrentSound={setCurrentSound}
+            setSequencePlayStatus={setSequencePlayStatus}
+            sequence={sequence.filter(space => space)}
+          />
         )}
       </SpaceContainer>
       <ControlsContainer>
-        <MediaWidget setSequencePlayStatus={setSequencePlayStatus} sequencePlayStatus={sequencePlayStatus}/>
+        <MediaWidget
+          setSequencePlayStatus={setSequencePlayStatus}
+          sequencePlayStatus={sequencePlayStatus}
+        />
       </ControlsContainer>
     </SequencerContainer>
   )
 }
 
 const SoundSequence = props => {
-  const { setSequencePlayStatus, sequence } = props
+  const {
+    setSequencePlayStatus,
+    sequence,
+    currentSound,
+    setCurrentSound
+  } = props
   // take in sound components as props or children
   // only one component rendering at a time, always playing
   // on finish, unmount and render following component
-
-  const [currentSound, setCurrentSound] = useState(0)
-
-  const handleSoundEnd = (index) => {
-    if (index + 1 === sequence.length ) {
+  const handleSoundEnd = index => {
+    if (index + 1 === sequence.length) {
       setCurrentSound(0)
       setSequencePlayStatus('STOPPED')
     } else {
-      setCurrentSound(index + 1) 
-    }   
+      setCurrentSound(index + 1)
+    }
   }
 
   return (
     <React.Fragment>
-      {
-        sequence.map((space, index) => 
-        ( currentSound === index &&
-          <Sound
-          key={index}
-          url={space.sound}
-          playStatus={Sound.status.PLAYING}
-          onFinishedPlaying={() => handleSoundEnd(index)}
-        />
-        ))
-      }
-
+      {sequence.map(
+        (space, index) =>
+          currentSound === index && (
+            <Sound
+              key={index}
+              url={space.sound}
+              playStatus={Sound.status.PLAYING}
+              onFinishedPlaying={() => handleSoundEnd(index)}
+            />
+          )
+      )}
     </React.Fragment>
   )
 }
