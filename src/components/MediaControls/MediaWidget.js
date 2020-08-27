@@ -31,25 +31,24 @@ const Bar = styled.div`
 `
 
 const PlayButton = styled.div`
-background-color: ${colors.secondary};
-border-radius: 50%;
-border: ${borders.medium};
-height: 200px;
-width: 200px;
+  background-color: ${colors.secondary};
+  border-radius: 50%;
+  border: ${borders.medium};
+  height: 200px;
+  width: 200px;
 `
 
-class MediaWidget extends Component {
-  render() {
-    return (
-      <MediaWidgetContainer>
-        <Bar>
-          <MediaButton />
-          <PlayButton />
-          <MediaButton />
-        </Bar>
-      </MediaWidgetContainer>
-    )
-  }
+const MediaWidget = (props) => {
+  const { setSequencePlayStatus } = props
+  return (
+    <MediaWidgetContainer>
+      <Bar>
+        <MediaButton />
+        <PlayButton onClick={() => setSequencePlayStatus('PLAYING')}/>
+        <MediaButton />
+      </Bar>
+    </MediaWidgetContainer>
+  )
 }
 
 export default MediaWidget

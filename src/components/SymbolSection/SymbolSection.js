@@ -22,8 +22,7 @@ const SymbolSectionContainer = styled.div`
   width: 55%;
   margin-left: ${navbar.width};
   min-height: calc(
-    100vh - ${sequencer.height.large} - ${borders.medium.split(' ')[0]} -
-      ${borders.medium.split(' ')[0]}
+    100vh - ${sequencer.height.large} - ${borders.medium.split(' ')[0]}
   );
   overflow: scroll;
 `

@@ -17,7 +17,7 @@ export const fontSize = {
 }
 
 export const borders = {
-    small: '',
+    small: `2px solid ${colors.black}`,
     medium: `3px solid ${colors.black}`,
     large: `5px solid ${colors.black}`
 }

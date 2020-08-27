@@ -11,16 +11,15 @@ const ButtonContainer = styled.div`
     width: 40px;
 `
 
+const PlayButton = (props) => {
 
-
-class PlayButton extends Component {
-    render() {
-        return (
-            <ButtonContainer>
+    const { setSequencePlayStatus } = props
+    return ( 
+        <ButtonContainer onClick={() => setSequencePlayStatus('PLAYING')}>
                 
-            </ButtonContainer>
-        );
-    }
+        </ButtonContainer>
+     );
 }
+
 
 export default PlayButton;

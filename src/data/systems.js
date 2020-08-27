@@ -23,59 +23,59 @@ const systems = {
             },
             {
                 symbol: 'F',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Punch - Pop.wav'
             },
             {
                 symbol: 'G',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Punch - Splok.wav'
             },
             {
                 symbol: 'H',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Punch - Whack A Bot.wav'
             },
             {
                 symbol: 'I',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Impact - Jaw Breaker.wav'
             },
             {
                 symbol: 'J',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Digital Crystal.wav'
             },
             {
                 symbol: 'K',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Digital Malfunction.wav'
             },
             {
                 symbol: 'L',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Mini Popup.wav'
             },
             {
                 symbol: 'M',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Ploppy Plop.wav'
             },
             {
                 symbol: 'N',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Pneumatic Woodpecker.wav'
             },
             {
                 symbol: 'O',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Sad Little Sonar.wav'
             },
             {
                 symbol: 'P',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Springy Gun.wav'
             },
             {
                 symbol: 'Q',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Stutter 303.wav'
             },
             {
                 symbol: 'R',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Swish.wav'
             },
             {
                 symbol: 'S',
-                sound: 'Retro - Chip Power.wav'
+                sound: 'Short - Tape Confusion.wav'
             }
         ]
     } 

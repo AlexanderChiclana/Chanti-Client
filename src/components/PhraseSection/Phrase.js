@@ -17,7 +17,7 @@ import { ItemTypes } from '../../items.js'
 const PhraseContainer = styled.div`
   padding: 0px 10px 0px 20px;
   border-radius: 50px;
-  border: ${borders.medium};
+  border: ${borders.small};
   background-color: ${colors.secondaryLight};
   display: flex;
   height: 65px;

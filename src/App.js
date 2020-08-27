@@ -38,11 +38,11 @@ const App = () => {
         <DragPreview />
         <Navbar />
         <Route exact path='/torah' render={() => (<BookPage symbolData={systems.torah.symbolSounds} title={'Torah'}/>)} /> 
-        <Route exact path='/lamentation' render={() => (<BookPage title={'Lamentation'}/>)} /> 
-        <Route exact path='/hhd' render={() => (<BookPage title={'HHD Torah'}/>)} /> 
-        <Route exact path='/haftarah' render={() => (<BookPage title={'Haftarah'}/>)} /> 
-        <Route exact path='/ruth' render={() => (<BookPage title={'Ruth'}/>)} /> 
-        <Route exact path='/esther' render={() => (<BookPage title={'Esther'}/>)} /> 
+        <Route exact path='/lamentation' render={() => (<BookPage  symbolData={systems.torah.symbolSounds} title={'Lamentation'}/>)} /> 
+        <Route exact path='/hhd' render={() => (<BookPage  symbolData={systems.torah.symbolSounds} title={'HHD Torah'}/>)} /> 
+        <Route exact path='/haftarah' render={() => (<BookPage  symbolData={systems.torah.symbolSounds} title={'Haftarah'}/>)} /> 
+        <Route exact path='/ruth' render={() => (<BookPage  symbolData={systems.torah.symbolSounds} title={'Ruth'}/>)} /> 
+        <Route exact path='/esther' render={() => (<BookPage  symbolData={systems.torah.symbolSounds} title={'Esther'}/>)} /> 
 
       </div>
     </DndProvider>

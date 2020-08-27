@@ -30,13 +30,13 @@ const ValueSpace = styled.div`
 `
 
 const Space = props => {
-  const { value, isDropTarget } = props
+  const { spaceValue, isDropTarget } = props
 
   return (
-    <SpaceContainer value={value} isDropTarget={isDropTarget}>
-      {value && (
+    <SpaceContainer isDropTarget={isDropTarget}>
+      {spaceValue && (
         <ValueSpace>
-          <BounceIn>{value}</BounceIn>
+          <BounceIn>{spaceValue.symbol}</BounceIn>
         </ValueSpace>
       )}
     </SpaceContainer>
