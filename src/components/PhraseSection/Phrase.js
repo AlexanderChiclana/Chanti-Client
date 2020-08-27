@@ -1,14 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Tile from '../SymbolSection/Tile.js'
 import PlayButton from '../MediaControls/PlayButton.js'
-import {
-  SlideInRight,
-  FlipInX,
-  BounceInDown
-} from 'animate-css-styled-components'
+
 
 import styled from 'styled-components'
-import { colors, navbar, sequencer, borders } from '../../theme.js'
+import { colors, borders } from '../../theme.js'
 
 
 import { useDrag } from 'react-dnd'
@@ -41,7 +37,6 @@ const Title = styled.h3`
 `
 
 const Phrase = props => {
-  const { index } = props
 
   const [{ isDragging }, drag] = useDrag({
     // need to define type based on set itemtypes, can attach additional props here. Accesible any time we interact with an item

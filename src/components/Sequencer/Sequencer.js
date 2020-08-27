@@ -9,8 +9,6 @@ import styled from 'styled-components'
 import {
   borders,
   colors,
-  flex,
-  fontSize,
   navbar,
   sequencer
 } from '../../theme.js'
@@ -52,6 +50,8 @@ const ControlsContainer = styled.div`
 
 const Sequencer = () => {
   const [sequence, setSequence] = useState([null, null, null, null, null, null])
+  const [sequencePlayStatus, setSequencePlayStatus] = useState('STOPPED')
+
 
   const [dropSound, toggleDrop] = useState('STOPPED')
 
@@ -78,8 +78,6 @@ const Sequencer = () => {
   const isDropTarget = index =>
     sequence.findIndex(space => space === null) === index && isOver
 
-  // const [playingIndex, setPlayingIndex] = useState(0)
-  const [sequencePlayStatus, setSequencePlayStatus] = useState('STOPPED')
 
   return (
     <SequencerContainer ref={drop}>
@@ -102,7 +100,7 @@ const Sequencer = () => {
         )}
       </SpaceContainer>
       <ControlsContainer>
-        <MediaWidget setSequencePlayStatus={setSequencePlayStatus} />
+        <MediaWidget setSequencePlayStatus={setSequencePlayStatus} sequencePlayStatus={sequencePlayStatus}/>
       </ControlsContainer>
     </SequencerContainer>
   )
@@ -117,46 +115,21 @@ const SoundSequence = props => {
   const [currentSound, setCurrentSound] = useState(0)
 
   const handleSoundEnd = (index) => {
-    console.log(index, sequence.length)
-    if (index + 1 <= sequence.length ) {
-      setCurrentSound(index + 1) 
-    } else {
-      console.log('reached the end')
+    if (index + 1 === sequence.length ) {
       setCurrentSound(0)
       setSequencePlayStatus('STOPPED')
-    }
-      
+    } else {
+      setCurrentSound(index + 1) 
+    }   
   }
 
   return (
     <React.Fragment>
-      {/* {currentSound === 0 && (
-        <Sound
-          url={'Retro - Shuriken Laser.wav'}
-          playStatus={Sound.status.PLAYING}
-          onFinishedPlaying={() => setCurrentSound(1)}
-        />
-      )}
-      {currentSound === 1 && (
-        <Sound
-          url={'Short - Digital Malfunction.wav'}
-          playStatus={Sound.status.PLAYING}
-          onFinishedPlaying={() => setCurrentSound(2)}
-        />
-      )}
-      {currentSound === 2 && (
-        <Sound
-          url={'Short - Ploppy Plop.wav'}
-          playStatus={Sound.status.PLAYING}
-          onFinishedPlaying={() => setSequencePlayStatus('STOPPED')}
-        />
-      )} */}
-
-
       {
         sequence.map((space, index) => 
         ( currentSound === index &&
           <Sound
+          key={index}
           url={space.sound}
           playStatus={Sound.status.PLAYING}
           onFinishedPlaying={() => handleSoundEnd(index)}

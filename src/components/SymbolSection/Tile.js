@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 
 import styled from 'styled-components'
-import { colors, navbar, sequencer, borders } from '../../theme.js'
+import { colors, borders } from '../../theme.js'
 
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../../items.js'
-import { usePreview } from 'react-dnd-multi-backend'
 
-import { FlipInX, Pulse, Tada } from 'animate-css-styled-components'
+import { FlipInX, Tada } from 'animate-css-styled-components'
 import Sound from 'react-sound'
 
 const TileContainer = styled.div`

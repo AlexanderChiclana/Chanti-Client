@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import styled from 'styled-components'
-import { colors, navbar, borders, sequencer, fontSize, flex } from '../../theme.js'
+import { colors, borders} from '../../theme.js'
 
 const ButtonContainer = styled.div`
     background-color: ${colors.secondary};
@@ -9,14 +9,18 @@ const ButtonContainer = styled.div`
     border: ${borders.small};
     height: 40px;
     width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
 `
 
 const PlayButton = (props) => {
 
-    const { setSequencePlayStatus } = props
+    const { setSequencePlayStatus, sequencePlayStatus } = props
     return ( 
         <ButtonContainer onClick={() => setSequencePlayStatus('PLAYING')}>
-                
+              <div>PLAY</div>
         </ButtonContainer>
      );
 }

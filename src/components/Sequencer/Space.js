@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { borders, colors, flex, fontSize, navbar } from '../../theme.js'
-import { BounceIn, FadeIn, FadeOut } from 'animate-css-styled-components'
+import { borders, colors } from '../../theme.js'
+import { BounceIn } from 'animate-css-styled-components'
 
 const SpaceContainer = styled.div`
   background-color: ${props => (props.isDropTarget ? '#6C9AB7' : '#6C9AB7')};

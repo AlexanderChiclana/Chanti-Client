@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { borders, colors, flex, fontSize } from '../../theme.js'
-import { Link, withRouter  } from 'react-router-dom'
-import { FlipInX } from 'animate-css-styled-components'
+import { withRouter  } from 'react-router-dom'
+
 
 
 const NavbarItemContainer = styled.div.attrs(props => ({

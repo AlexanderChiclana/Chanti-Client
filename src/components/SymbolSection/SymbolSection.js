@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import styled from 'styled-components'
 import {
@@ -6,11 +6,7 @@ import {
   navbar,
   borders,
   sequencer,
-  fontSize,
-  flex
 } from '../../theme.js'
-
-import { HeadShake, FadeIn, FadeOut } from 'animate-css-styled-components'
 
 import Tile from './Tile.js'
 

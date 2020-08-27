@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import MediaButton from './MediaButton.js'
 
 import styled from 'styled-components'
 import {
   colors,
-  navbar,
-  borders,
-  sequencer,
-  fontSize,
-  flex
+  borders
 } from '../../theme.js'
 
 const MediaWidgetContainer = styled.div`
@@ -36,15 +32,20 @@ const PlayButton = styled.div`
   border: ${borders.medium};
   height: 200px;
   width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const MediaWidget = (props) => {
-  const { setSequencePlayStatus } = props
+  const { setSequencePlayStatus, sequencePlayStatus } = props
   return (
     <MediaWidgetContainer>
       <Bar>
         <MediaButton />
-        <PlayButton onClick={() => setSequencePlayStatus('PLAYING')}/>
+        <PlayButton sequencePlayStatus={sequencePlayStatus} onClick={() => setSequencePlayStatus('PLAYING')}>
+          {sequencePlayStatus}
+        </PlayButton>
         <MediaButton />
       </Bar>
     </MediaWidgetContainer>

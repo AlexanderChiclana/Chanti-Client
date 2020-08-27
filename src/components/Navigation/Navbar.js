@@ -1,8 +1,8 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { colors, navbar } from '../../theme.js'
 import NavbarItem from './NavbarItem.js'
-import { Link } from 'react-router-dom'
+
 
 const NavContainer = styled.div`
   height: 100vh;
@@ -22,7 +22,7 @@ const ProfileContainer = styled.div`
 `
 
 const NavBar = () => {
-  const [books, setActive ] = useState([
+  const [books ] = useState([
     {
       route: 'torah', 
       title:'Torah'
@@ -53,7 +53,7 @@ const NavBar = () => {
   return ( 
     <NavContainer>
     <ProfileContainer></ProfileContainer>
-    {books.map((book)=> <NavbarItem route={book.route} title={book.title}/>)}
+    {books.map((book, index)=> <NavbarItem key={index} route={book.route} title={book.title}/>)}
 
   </NavContainer>
    );

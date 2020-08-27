@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { colors, navbar, borders, sequencer, fontSize, flex } from '../../theme.js'
+import { colors, borders} from '../../theme.js'
 
 const ButtonContainer = styled.div`
 background-color: ${colors.offBlack};

@@ -2,9 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navigation/Navbar.js'
-import Sequencer from './components/Sequencer/Sequencer.js'
-import SymbolSection from './components/SymbolSection/SymbolSection.js'
-import PhraseSection from './components/PhraseSection/PhraseSection.js'
+
 import DragPreview from './components/DragPreviews/DragPreview.js'
 import BookPage from './pages/BookPage.js'
 
