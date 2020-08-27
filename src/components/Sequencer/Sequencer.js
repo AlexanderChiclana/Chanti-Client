@@ -98,7 +98,7 @@ const Sequencer = () => {
         ))}
 
         {sequencePlayStatus === 'PLAYING' && (
-          <SoundSequence setSequencePlayStatus={setSequencePlayStatus} />
+          <SoundSequence setSequencePlayStatus={setSequencePlayStatus} sequence={sequence.filter((space) => space)}/>
         )}
       </SpaceContainer>
       <ControlsContainer>
@@ -109,16 +109,28 @@ const Sequencer = () => {
 }
 
 const SoundSequence = props => {
-  const { setSequencePlayStatus } = props
+  const { setSequencePlayStatus, sequence } = props
   // take in sound components as props or children
   // only one component rendering at a time, always playing
   // on finish, unmount and render following component
 
   const [currentSound, setCurrentSound] = useState(0)
 
+  const handleSoundEnd = (index) => {
+    console.log(index, sequence.length)
+    if (index + 1 <= sequence.length ) {
+      setCurrentSound(index + 1) 
+    } else {
+      console.log('reached the end')
+      setCurrentSound(0)
+      setSequencePlayStatus('STOPPED')
+    }
+      
+  }
+
   return (
     <React.Fragment>
-      {currentSound === 0 && (
+      {/* {currentSound === 0 && (
         <Sound
           url={'Retro - Shuriken Laser.wav'}
           playStatus={Sound.status.PLAYING}
@@ -138,7 +150,20 @@ const SoundSequence = props => {
           playStatus={Sound.status.PLAYING}
           onFinishedPlaying={() => setSequencePlayStatus('STOPPED')}
         />
-      )}
+      )} */}
+
+
+      {
+        sequence.map((space, index) => 
+        ( currentSound === index &&
+          <Sound
+          url={space.sound}
+          playStatus={Sound.status.PLAYING}
+          onFinishedPlaying={() => handleSoundEnd(index)}
+        />
+        ))
+      }
+
     </React.Fragment>
   )
 }
