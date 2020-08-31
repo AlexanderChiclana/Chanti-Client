@@ -69,18 +69,25 @@ const Sequencer = () => {
     sequence.includes(null) && toggleDrop('PLAYING')
   }
 
-  const isDropTarget = index =>
+  const isDropTarget = index => (
     sequence.findIndex(space => space === null) === index && isOver
+  )
 
   const isPlaying = (index) => (
     
-    index === currentSound && sequencePlayStatus === 'PLAYING'
+    index === currentSound && (sequencePlayStatus === 'PLAYING' || sequencePlayStatus === 'PAUSED')
+  )
+
+  const hasPlayed = (index) => (
+    
+    index < currentSound && (sequencePlayStatus === 'PLAYING' || sequencePlayStatus === 'PAUSED')
   )
 
   return (
     <SequencerContainer ref={drop}>
       <Sound
         url={'pop.mp3'}
+        playbackRate={2}
         playStatus={Sound.status[dropSound]}
         onFinishedPlaying={() => toggleDrop('STOPPED')}
       />
@@ -90,6 +97,7 @@ const Sequencer = () => {
           <Space
             key={index}
             isPlaying={isPlaying(index)}
+            hasPlayed={hasPlayed(index)}
             isDropTarget={isDropTarget(index)}
             spaceValue={space}
           />
@@ -108,6 +116,7 @@ const Sequencer = () => {
         <MediaWidget
           setSequencePlayStatus={setSequencePlayStatus}
           sequencePlayStatus={sequencePlayStatus}
+          setCurrentSound={setCurrentSound}
         />
       </ControlsContainer>
     </SequencerContainer>
@@ -133,6 +142,10 @@ const SoundSequence = props => {
     }
   }
 
+  const calcSoundCompletion = (playObject) => {
+    console.log(playObject.position / playObject.duration)
+  }
+
   return (
     <React.Fragment>
       {sequence.map(
@@ -140,7 +153,9 @@ const SoundSequence = props => {
           currentSound === index && (
             <Sound
               key={index}
+              playbackRate={2}
               url={space.sound}
+              onPlaying={(playObject) => calcSoundCompletion(playObject)}
               playStatus={Sound.status.PLAYING}
               onFinishedPlaying={() => handleSoundEnd(index)}
             />

@@ -61,9 +61,7 @@ const Tile = props => {
       <Sound
         url={sound}
         playStatus={isDragging ? Sound.status.STOPPED : Sound.status[playState]}
-        //  playFromPosition={0 /* in milliseconds */}
-        //  onLoading={handleSongLoading}
-        //  onPlaying={() => {console.log('playing')}}
+        playbackRate={2}
         onFinishedPlaying={() => togglePlay('STOPPED')}
       />
       <TileContainer

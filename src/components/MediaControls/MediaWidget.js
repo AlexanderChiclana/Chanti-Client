@@ -1,7 +1,5 @@
 import React from 'react'
 
-import MediaButton from './MediaButton.js'
-
 import styled from 'styled-components'
 import {
   colors,
@@ -37,13 +35,37 @@ const PlayButton = styled.div`
   align-items: center;
 `
 
+
+const MediaButton = styled.div`
+background-color: ${colors.offBlack};
+border-radius: 50%;
+border: ${borders.medium};
+height: 80px;
+width: 80px;
+`
+
 const MediaWidget = (props) => {
-  const { setSequencePlayStatus, sequencePlayStatus } = props
+  const { setSequencePlayStatus, sequencePlayStatus, setCurrentSound } = props
+
+  const handlePlayPause = () => {
+    if(sequencePlayStatus === 'PLAYING'){
+      setSequencePlayStatus('PAUSED')
+    } else {
+      setSequencePlayStatus('PLAYING')
+    }
+  }
+
+  const handleStop = () => {
+    console.log('stopping')
+    setCurrentSound(0)
+    setSequencePlayStatus('STOPPED')
+  }
+
   return (
     <MediaWidgetContainer>
       <Bar>
-        <MediaButton />
-        <PlayButton sequencePlayStatus={sequencePlayStatus} onClick={() => setSequencePlayStatus('PLAYING')}>
+        <MediaButton onClick={() => handleStop()}/>
+        <PlayButton sequencePlayStatus={sequencePlayStatus} onClick={() => handlePlayPause()}>
           {sequencePlayStatus}
         </PlayButton>
         <MediaButton />

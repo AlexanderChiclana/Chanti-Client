@@ -5,7 +5,7 @@ import { BounceIn } from 'animate-css-styled-components'
 
 const SpaceContainer = styled.div`
   background-color: ${props => (props.isDropTarget ? '#6C9AB7' : '#6C9AB7')};
-  opacity: ${props => (props.isDropTarget ? '.5' : '1')};
+  opacity: ${props => (props.isDropTarget || props.hasPlayed ? '.5' : '1')};
   transition: opacity 150ms;
   border-radius: 15%;
   height: 130px;
@@ -18,6 +18,7 @@ const SpaceContainer = styled.div`
 
 const ValueSpace = styled.div`
   background-color: ${props => (props.isPlaying ? colors.secondaryLight : colors.white)};
+  // opacity: ${props => (props.hasPlayed && '.3')};
   height: 100%;
   width: 100%;
   border-radius: inherit;
@@ -30,12 +31,12 @@ const ValueSpace = styled.div`
 `
 
 const Space = props => {
-  const { spaceValue, isDropTarget, isPlaying } = props
+  const { spaceValue, isDropTarget, isPlaying, hasPlayed } = props
 
   return (
-    <SpaceContainer isDropTarget={isDropTarget}>
+    <SpaceContainer isDropTarget={isDropTarget} hasPlayed={hasPlayed}>
       {spaceValue && (
-        <ValueSpace isPlaying={isPlaying}>
+        <ValueSpace isPlaying={isPlaying} hasPlayed={hasPlayed}>
           <BounceIn>{spaceValue.symbol}</BounceIn>
         </ValueSpace>
       )}
