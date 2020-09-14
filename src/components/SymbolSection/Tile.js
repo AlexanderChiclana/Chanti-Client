@@ -82,8 +82,8 @@ const Tile = props => {
           </Tada>
         </SoundIndicator>
         }
-
-        {symbol}
+      <img src={'haftarah-1.svg'} style={{height: '100%'}} alt="symbol"/>
+        {/* {symbol} */}
       </TileContainer>
     </FlipInX>
   )

@@ -46,6 +46,7 @@ const Sequencer = () => {
   const [sequence, setSequence] = useState([null, null, null, null, null, null])
   const [sequencePlayStatus, setSequencePlayStatus] = useState('STOPPED')
   const [currentSound, setCurrentSound] = useState(0)
+  // const [currentSoundCompletion, setCurrentSoundCompletion] = useState(0)
 
   const [dropSound, toggleDrop] = useState('STOPPED')
 
@@ -61,6 +62,7 @@ const Sequencer = () => {
     const sequenceCopy = [...sequence]
 
     sequenceCopy[sequenceCopy.findIndex(space => space === null)] = {
+      playCompletion: 0,
       symbol: item.symbol,
       sound: item.sound
     }
@@ -68,6 +70,17 @@ const Sequencer = () => {
     setSequence(sequenceCopy)
     sequence.includes(null) && toggleDrop('PLAYING')
   }
+
+
+  const setCompletionPercentage = (playObject, index) => {
+    const completionPercentage = playObject.position / playObject.duration
+    const sequenceCopy = [...sequence]
+
+    sequenceCopy[index].playCompletion = completionPercentage
+    setSequence(sequenceCopy)
+  }
+
+  // boolean functions
 
   const isDropTarget = index => (
     sequence.findIndex(space => space === null) === index && isOver
@@ -98,6 +111,7 @@ const Sequencer = () => {
             key={index}
             isPlaying={isPlaying(index)}
             hasPlayed={hasPlayed(index)}
+            // currentSoundCompletion={currentSoundCompletion}
             isDropTarget={isDropTarget(index)}
             spaceValue={space}
           />
@@ -107,6 +121,7 @@ const Sequencer = () => {
           <SoundSequence
             currentSound={currentSound}
             setCurrentSound={setCurrentSound}
+            setCompletionPercentage={setCompletionPercentage}
             setSequencePlayStatus={setSequencePlayStatus}
             sequence={sequence.filter(space => space)}
           />
@@ -128,8 +143,9 @@ const SoundSequence = props => {
     setSequencePlayStatus,
     sequence,
     currentSound,
-    setCurrentSound
-  } = props
+    setCurrentSound,
+    setCompletionPercentage
+    } = props
   // take in sound components as props or children
   // only one component rendering at a time, always playing
   // on finish, unmount and render following component
@@ -142,9 +158,11 @@ const SoundSequence = props => {
     }
   }
 
-  const calcSoundCompletion = (playObject) => {
-    console.log(playObject.position / playObject.duration)
-  }
+  // const calcSoundCompletion = (playObject, index) => {
+  //   const completionPercentage = playObject.position / playObject.duration
+
+  //   // setCurrentSoundCompletion(completionPercentage)
+  // }
 
   return (
     <React.Fragment>
@@ -153,9 +171,9 @@ const SoundSequence = props => {
           currentSound === index && (
             <Sound
               key={index}
-              playbackRate={2}
+              playbackRate={1}
               url={space.sound}
-              onPlaying={(playObject) => calcSoundCompletion(playObject)}
+              onPlaying={(playObject) => setCompletionPercentage(playObject, index)}
               playStatus={Sound.status.PLAYING}
               onFinishedPlaying={() => handleSoundEnd(index)}
             />
